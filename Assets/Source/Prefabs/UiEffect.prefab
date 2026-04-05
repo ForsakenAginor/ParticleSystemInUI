@@ -24950,7 +24950,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147491840
+    m_Bits: 2147483648
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: ac30208fadaa0c44abd3d167a8b28a94, type: 2}
   m_TargetDisplay: 0
@@ -25016,6 +25016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8416086927022103892}
   - component: {fileID: 7053234618388655795}
+  - component: {fileID: 4413782099427832526}
   m_Layer: 31
   m_Name: UiEffect
   m_TagString: Untagged
@@ -25058,6 +25059,21 @@ MonoBehaviour:
   _interactEffect: {fileID: 7333542849101111490}
   _highlightEffect: {fileID: 1225902888425740219}
   _clickEffect: {fileID: 8301253095505702978}
+--- !u!114 &4413782099427832526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191291580825482117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1510ac915c53d4e901ab6fee8d8af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIParticleValidator
+  _uiParticleCamera: {fileID: 8464921028601693971}
+  _particleEffects:
+  - {fileID: 7137308290248167988}
 --- !u!1 &4271169631672349429
 GameObject:
   m_ObjectHideFlags: 0
