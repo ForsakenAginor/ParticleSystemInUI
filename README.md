@@ -1,4 +1,4 @@
-# UI Particle System Toolkit
+# ParticleSystemInUI Toolkit
 
 A complete solution for rendering **Particle System effects on Unity UI** without the limitations of standard approaches. Perfect for click effects, hover highlights, interactive feedback, and any other particle-based UI animations.
 
