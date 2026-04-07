@@ -1,8 +1,10 @@
 using UnityEngine;
 
-[ExecuteAlways]
-public class UIParticleValidator : MonoBehaviour
+namespace ParticleSystemInUi
 {
+    [ExecuteAlways]
+    public class UIParticleValidator : MonoBehaviour
+    {
         private const string LayerName = "UIParticlesLayer";
         
         [SerializeField] private Camera _uiParticleCamera;
@@ -79,3 +81,4 @@ public class UIParticleValidator : MonoBehaviour
         }
 #endif
     }
+}

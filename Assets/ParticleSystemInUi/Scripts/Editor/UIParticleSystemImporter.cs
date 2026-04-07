@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 
+namespace ParticleSystemInUi.Editor
+{
     [InitializeOnLoad]
     public class UIParticleSystemImporter : AssetPostprocessor
     {
@@ -74,3 +76,4 @@ using UnityEngine;
             Debug.Log("Package exported to ParticleSystemInUI.unitypackage");
         }*/
     }
+}

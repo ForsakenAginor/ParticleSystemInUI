@@ -1,74 +1,77 @@
 using System;
 using UnityEngine;
 
-public class DemoLogic : MonoBehaviour
+namespace ParticleSystemInUi
 {
-    [SerializeField] private UIEffectPool _effectPool;
-    [SerializeField] private RectTransform _defaultEffectCanvas;
-    [SerializeField] private ButtonWithUIEffect[] _commonButtons;
-    [SerializeField] private ButtonWithUIEffect[] _gridButtons;
-    [SerializeField] private UIElementWithHighlightEffect[] _highlightButtons;
-    [SerializeField] private ScreenClickDetector _screenClickDetector;
-
-    private void Start()
+    public class DemoLogic : MonoBehaviour
     {
-        foreach (ButtonWithUIEffect button in _commonButtons)
+        [SerializeField] private UIEffectPool _effectPool;
+        [SerializeField] private RectTransform _defaultEffectCanvas;
+        [SerializeField] private ButtonWithUIEffect[] _commonButtons;
+        [SerializeField] private ButtonWithUIEffect[] _gridButtons;
+        [SerializeField] private UIElementWithHighlightEffect[] _highlightButtons;
+        [SerializeField] private ScreenClickDetector _screenClickDetector;
+
+        private void Start()
         {
-            button.OnClicked += OnButtonClicked;
+            foreach (ButtonWithUIEffect button in _commonButtons)
+            {
+                button.OnClicked += OnButtonClicked;
+            }
+
+            foreach (ButtonWithUIEffect button in _gridButtons)
+            {
+                button.OnClicked += OnGridButtonClicked;
+            }
+
+            foreach (UIElementWithHighlightEffect button in _highlightButtons)
+            {
+                button.PointerEnter += StartHightlight;
+            }
+
+            _screenClickDetector.ScreenClicked += OnScreenClicked;
         }
 
-        foreach (ButtonWithUIEffect button in _gridButtons)
+        private void OnDestroy()
         {
-            button.OnClicked += OnGridButtonClicked;
+            foreach (ButtonWithUIEffect button in _commonButtons)
+            {
+                button.OnClicked -= OnButtonClicked;
+            }
+
+            foreach (ButtonWithUIEffect button in _gridButtons)
+            {
+                button.OnClicked -= OnGridButtonClicked;
+            }
+
+            foreach (UIElementWithHighlightEffect button in _highlightButtons)
+            {
+                button.PointerEnter += StartHightlight;
+            }
+
+            _screenClickDetector.ScreenClicked -= OnScreenClicked;
         }
 
-        foreach (UIElementWithHighlightEffect button in _highlightButtons)
+        private void OnScreenClicked(RectTransform rect, Vector2 position)
         {
-            button.PointerEnter += StartHightlight;
+            _effectPool.GetUIEffectAdapter().PlayClickEffect(rect, position);
         }
 
-        _screenClickDetector.ScreenClicked += OnScreenClicked;
-    }
-
-    private void OnDestroy()
-    {
-        foreach (ButtonWithUIEffect button in _commonButtons)
+        private void StartHightlight(RectTransform rect, Action<UIEffectAdapter> callback)
         {
-            button.OnClicked -= OnButtonClicked;
+            var adapter = _effectPool.GetUIEffectAdapter();
+            callback.Invoke(adapter);
+            adapter.PlayHighlightEffect(rect);
         }
 
-        foreach (ButtonWithUIEffect button in _gridButtons)
+        private void OnGridButtonClicked(RectTransform rectTransform)
         {
-            button.OnClicked -= OnGridButtonClicked;
+            _effectPool.GetUIEffectAdapter().PlayEffect(rectTransform, _defaultEffectCanvas);
         }
 
-        foreach (UIElementWithHighlightEffect button in _highlightButtons)
+        private void OnButtonClicked(RectTransform rectTransform)
         {
-            button.PointerEnter += StartHightlight;
+            _effectPool.GetUIEffectAdapter().PlayEffect(rectTransform);
         }
-
-        _screenClickDetector.ScreenClicked -= OnScreenClicked;
-    }
-
-    private void OnScreenClicked(RectTransform rect, Vector2 position)
-    {
-        _effectPool.GetUIEffectAdapter().PlayClickEffect(rect, position);
-    }
-
-    private void StartHightlight(RectTransform rect, Action<UIEffectAdapter> callback)
-    {
-        var adapter = _effectPool.GetUIEffectAdapter();
-        callback.Invoke(adapter);
-        adapter.PlayHighlightEffect(rect);
-    }
-
-    private void OnGridButtonClicked(RectTransform rectTransform)
-    {
-        _effectPool.GetUIEffectAdapter().PlayEffect(rectTransform, _defaultEffectCanvas);
-    }
-
-    private void OnButtonClicked(RectTransform rectTransform)
-    {
-        _effectPool.GetUIEffectAdapter().PlayEffect(rectTransform);
     }
 }
