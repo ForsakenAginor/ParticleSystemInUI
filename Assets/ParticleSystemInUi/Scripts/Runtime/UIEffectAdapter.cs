@@ -90,6 +90,12 @@ public class UIEffectAdapter : MonoBehaviour
         StartCoroutine(WaitWhilePlaying());
     }
 
+    /// <summary>
+    /// Plays a click effect at the specified position relative to the given parent.
+    /// </summary>
+    /// <param name="parent">The UI element transform that will be the parent of the effect.</param>
+    /// <param name="position">The anchored position where the click effect should appear.</param>
+    /// <param name="size">The size of the click effect. Default is 50f.</param>
     public void PlayClickEffect(RectTransform parent, Vector2 position, float size = 50f)
     {
         gameObject.SetActive(true);
@@ -105,6 +111,10 @@ public class UIEffectAdapter : MonoBehaviour
         StartCoroutine(WaitWhilePlaying());
     }
 
+    /// <summary>
+    /// Stops all currently playing effects immediately.
+    /// This includes click, interact, and highlight effects.
+    /// </summary>
     public void StopAllEffects()
     {
         _clickEffect.Stop();

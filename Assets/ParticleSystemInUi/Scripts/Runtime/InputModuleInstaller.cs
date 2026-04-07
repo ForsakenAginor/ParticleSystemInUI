@@ -12,7 +12,7 @@ using UnityEngine.InputSystem.UI;
     /// Prefers Input System if available, otherwise falls back to Legacy Input.
     /// </summary>
     [RequireComponent(typeof(EventSystem))]
-    public class UIParticleInputModuleInstaller : MonoBehaviour
+    public class InputModuleInstaller : MonoBehaviour
     {
         [SerializeField] private bool _forceLegacyInput = false;
         

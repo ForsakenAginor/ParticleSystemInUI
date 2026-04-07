@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages a pool of UIEffectAdapter instances for efficient reuse of UI effects.
+/// Prevents frequent instantiation and destruction of effect objects.
+/// </summary>
 public class UIEffectPool : MonoBehaviour
 {
     [SerializeField] private UIEffectAdapter[] _adapters;
@@ -16,6 +20,15 @@ public class UIEffectPool : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Retrieves a UIEffectAdapter from the pool.
+    /// </summary>
+    /// <returns>
+    /// An available UIEffectAdapter instance ready to use.
+    /// </returns>
+    /// <exception cref="Exception">
+    /// Thrown when there are no available adapters in the pool.
+    /// </exception>
     public UIEffectAdapter GetUIEffectAdapter()
     {
         if (_pool.Count == 0)
