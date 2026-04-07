@@ -44,6 +44,8 @@ This toolkit provides:
 
 ## 🎮 Quick Start
 
+![Demo of ParticleSystemInUI Toolkit](Assets/ParticleSystemInUi/Images/DemoGif.gif)
+
 ### Demo Scene
 
 To see how the toolkit works in action, open the **demo scene** included in the package. The demo scene demonstrates:
