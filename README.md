@@ -22,11 +22,11 @@ This toolkit provides:
 | 📐 **Layout Groups** | Effects don't interfere with Layout Group calculations |
 | 🎯 **Pooling System** | Prevents GC and improves performance |
 | ⚡ **Auto Setup** | Automatically creates required layers |
-| 📦 **Unity Package** | Ready to import via Unity Package Manager or .unitypackage |
+| 📦 **Unity Package** | Ready to import via .unitypackage |
 
 ## 📋 Requirements
 
-- Unity **2022.3** or **2023.x** or **6000.0+**
+- Unity **2022** or **2023** or **6000+**
 - Universal Render Pipeline (URP) recommended
 - No additional assets required
 
